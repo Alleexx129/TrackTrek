@@ -15,10 +15,17 @@ def search_video(query):
         'quiet': True,
         'format': 'bestaudio/best',
         'noplaylist': True,
+        'logger': MyLogger(),
     }
     with yt_dlp.YoutubeDL(search_opts) as ydl:
         search_result = ydl.extract_info(f"ytsearch5:{query}", download=False)
         return search_result['entries'] if 'entries' in search_result else []
+
+class MyLogger(yt_dlp.utils.std_logger):
+    def warning(self, msg):
+        if "nsig extraction failed" in msg:
+            return
+        super().warning(msg)
 
 def download_audio(video_url, title, artist):
     sanitized_title = sanitize_filename(f"{title} - {artist}")
@@ -35,6 +42,7 @@ def download_audio(video_url, title, artist):
         'http_chunk_size': 1024 * 1024,
         'concurrent_fragments': 10,
     }
+    print("Loading...")
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([video_url])
     return output_template + ".mp3"
@@ -45,7 +53,7 @@ def add_metadata_to_mp3(file_path, info):
     except ID3NoHeaderError:
         audio.add_tags()
 
-    # add metadata here, I am so bad at commenting omg
+    # Add metadata
     audio['TIT2'] = TIT2(encoding=3, text=info['title'])
     audio['TPE1'] = TPE1(encoding=3, text=info['artist'])
     audio['TALB'] = TALB(encoding=3, text=info['album'])
