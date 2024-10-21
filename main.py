@@ -47,7 +47,7 @@ def download_audio(video_url, title, artist):
         "logger": loggerOutputs,
         'noplaylist': True,
     }
-    print("Loading...")  # Print loading message
+    print("Loading...")
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([video_url])
@@ -65,7 +65,6 @@ def add_metadata_to_mp3(file_path, info):
     except ID3NoHeaderError:
         audio.add_tags()
 
-    # Add metadata
     audio['TIT2'] = TIT2(encoding=3, text=info['title'])
     audio['TPE1'] = TPE1(encoding=3, text=info['artist'])
     audio['TALB'] = TALB(encoding=3, text=info['album'])
@@ -110,7 +109,7 @@ def main():
         video_info = yt_dlp.YoutubeDL({'quiet': True}).extract_info(video_url, download=False)
         video_title = video_info['title']
         video_artist = video_info['uploader']
-        artwork_url = video_info.get('thumbnail')  # Extract thumbnail directly from video_info
+        artwork_url = video_info.get('thumbnail')
     else:
         video_results = search_video(keyword)
         if not video_results:
@@ -130,7 +129,7 @@ def main():
         video_url = selected_video['url']
         video_title = selected_video['title']
         video_artist = selected_video['uploader']
-        artwork_url = selected_video.get('thumbnail', None)  # Ensure you get the thumbnail from selected_video
+        artwork_url = selected_video.get('thumbnail', None)
 
     output_file = download_audio(video_url, video_title, video_artist)
     print(f"Download complete: {output_file}")
@@ -139,7 +138,7 @@ def main():
         'title': video_title,
         'artist': video_artist,
         'album': 'YouTube',
-        'artwork_url': artwork_url,  # Use the extracted artwork_url
+        'artwork_url': artwork_url,
         'release_date': video_info.get('upload_date', None) if 'video_info' in locals() else selected_video.get('upload_date', None)
     })
 
