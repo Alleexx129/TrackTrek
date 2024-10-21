@@ -3,7 +3,7 @@
 # Music Scraper
 
 ## What is this?
-**Music Scraper** is a Python program that allows you to easily download your favorite music from various online platforms. This tool retrieves audio tracks along with their metadata, including the title, artist, album information, and artwork. With a user-friendly interface, you can search for specific songs or artists and select from the top results to download high-quality audio files directly to your device.
+**Music Scraper** is a Python program that allows you to easily download your favorite music from Youtube. This tool retrieves audio tracks along with their metadata, including the title, artist, album information, and artwork. With a user-friendly interface, you can search for specific songs or artists and select from the top results to download high-quality audio files directly to your device.
 
 ## Key Features:
 - **Download Music**: Obtain audio files in MP3 format for easy playback on any device.
