@@ -11,11 +11,16 @@
 - **Artwork Download**: Includes album artwork for a complete listening experience.
 - **User-Friendly Search**: Quickly find the music you want by entering keywords related to the song or artist.
 
-## how to use?
-
+## How to use?
+- Enter youtube link or keywork
+- Choose between 5 first searches if you select with keywords
 
 ## Disclaimer
 **Music Scraper** is a tool designed to assist users in downloading music from online sources. By using this program, you acknowledge and agree that:
 - The use of this software is at your own risk.
 - I, the creator of this program, am not responsible for any damage, loss of data, or legal issues that may arise from your use of this software.
-- You are responsible for ensuring that you comply with all applicable laws and regulations regarding the downloading and use of audio content.# musicScrapper
+- You are responsible for ensuring that you comply with all applicable laws and regulations regarding the downloading and use of audio content.
+
+# Other
+Use at your own risks as I said ;)
+I don't need credits if you enter this into public or make money out of this, feel free to modify or do whatevery you want, if you need specific changes let me know!
