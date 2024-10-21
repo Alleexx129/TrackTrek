@@ -43,6 +43,9 @@ def download_audio(video_url, title, artist):
         'quiet': True,
         'http_chunk_size': 1024 * 1024,
         'concurrent_fragments': 10,
+        'format': 'bestaudio/best',
+        "logger": loggerOutputs,
+        'noplaylist': True,
     }
     print("Loading...")  # Print loading message
     try:
@@ -107,6 +110,7 @@ def main():
         video_info = yt_dlp.YoutubeDL({'quiet': True}).extract_info(video_url, download=False)
         video_title = video_info['title']
         video_artist = video_info['uploader']
+        artwork_url = video_info.get('thumbnail')  # Extract thumbnail directly from video_info
     else:
         video_results = search_video(keyword)
         if not video_results:
@@ -126,6 +130,7 @@ def main():
         video_url = selected_video['url']
         video_title = selected_video['title']
         video_artist = selected_video['uploader']
+        artwork_url = selected_video.get('thumbnail', None)  # Ensure you get the thumbnail from selected_video
 
     output_file = download_audio(video_url, video_title, video_artist)
     print(f"Download complete: {output_file}")
@@ -134,9 +139,10 @@ def main():
         'title': video_title,
         'artist': video_artist,
         'album': 'YouTube',
-        'artwork_url': video_info.get('thumbnail', None) if 'video_info' in locals() else selected_video.get('thumbnail', None),
+        'artwork_url': artwork_url,  # Use the extracted artwork_url
         'release_date': video_info.get('upload_date', None) if 'video_info' in locals() else selected_video.get('upload_date', None)
     })
+
 
 if __name__ == "__main__":
     main()
