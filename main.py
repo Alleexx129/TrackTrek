@@ -10,22 +10,24 @@ from io import BytesIO
 def sanitize_filename(filename):
     return re.sub(r'[<>:"/\\|?*]', '', filename)
 
+class loggerOutputs:
+    def error(msg):
+        a=1 # remove warnings srry didn't find any other ways ;)
+    def warning(msg):
+        a=1 # remove warnings srry didn't find any other ways ;)
+    def debug(msg):
+        a=1 # remove warnings srry didn't find any other ways ;)
+
 def search_video(query):
     search_opts = {
         'quiet': True,
         'format': 'bestaudio/best',
+        "logger": loggerOutputs,
         'noplaylist': True,
-        'logger': MyLogger(),
     }
     with yt_dlp.YoutubeDL(search_opts) as ydl:
         search_result = ydl.extract_info(f"ytsearch5:{query}", download=False)
         return search_result['entries'] if 'entries' in search_result else []
-
-class MyLogger(yt_dlp.utils.std_logger):
-    def warning(self, msg):
-        if "nsig extraction failed" in msg:
-            return
-        super().warning(msg)
 
 def download_audio(video_url, title, artist):
     sanitized_title = sanitize_filename(f"{title} - {artist}")
@@ -42,9 +44,16 @@ def download_audio(video_url, title, artist):
         'http_chunk_size': 1024 * 1024,
         'concurrent_fragments': 10,
     }
-    print("Loading...")
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([video_url])
+    print("Loading...")  # Print loading message
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([video_url])
+    except Exception as e:
+        if "nsig extraction failed" in str(e):
+            print("Warning suppressed: nsig extraction failed. You may experience throttling for some formats.")
+        else:
+            print(f"An error occurred: {e}")
+
     return output_template + ".mp3"
 
 def add_metadata_to_mp3(file_path, info):
@@ -91,6 +100,7 @@ def is_valid_youtube_url(url):
 
 def main():
     keyword = input("Enter the song keyword or YouTube link: \n>> ")
+    print("Loading...")
 
     if is_valid_youtube_url(keyword):
         video_url = keyword
