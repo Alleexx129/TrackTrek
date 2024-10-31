@@ -11,16 +11,17 @@ import re
 from bs4 import BeautifulSoup
 
 def getOtherInfos(track_title, artist_name):
-    track_title = re.sub(r'[^a-zA-Z0-9\s]', '', track_title)
+    track_title = re.sub(r'[^a-zA-Z0-9\s-]', '', track_title)
     # Format the Genius search URL with song title and artist
-    search_url = str(f'https://genius.com/{artist_name.replace(" ", "-")}-{track_title.replace(" ", "-")}-lyrics').replace("--", "-")
+    search_url = str(f'https://genius.com/{artist_name.replace(" ", "-")}-{track_title.replace(" ", "-")}-lyrics').replace("--", "-").replace("--", "-")
+    print(search_url)
     response = requests.get(search_url)
     
     if response.status_code == 200:
         # "collects" (or straight up webscraping) if you prefer
         soup = BeautifulSoup(response.text, 'html.parser')
         
-        album_tags = soup.find_all('a', class_='StyledLink-sc-3ea0mt-0 ietQTa')
+        album_tags = soup.find_all('a', href=lambda href: href and '#primary-album' in href)
         genresContainer = soup.find_all('div', class_='SongTags__Container-xixwg3-1 bZsZHM')
         genres = []
 
