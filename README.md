@@ -1,4 +1,4 @@
-*Not a library* I won't make this into a library
+Revamped
 
 # Music Scraper
 
@@ -11,9 +11,27 @@
 - **Artwork Download**: Includes album artwork for a complete listening experience.
 - **User-Friendly Search**: Quickly find the music you want by entering keywords related to the song or artist.
 
+## Installation
+### Install python
+https://www.python.org/downloads/release/python-3130/
+
+### Install depencies
+```bash
+pip install mutagen yt-dlp bs4 pillow requests
+```
+
+I will make this into a exe file soon with UI, but I will keep it open-source of course as always
+
 ## How to use?
 - Enter youtube link or keywork
 - Choose between 5 first searches if you select with keywords
+
+# Dependencies
+- yt_dlp
+- mutagen
+- BeautifulSoup (bs4)
+- pillow
+- requests
 
 ## Disclaimer
 **Music Scraper** is a tool designed to assist users in downloading music from online sources. By using this program, you acknowledge and agree that:
