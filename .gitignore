@@ -19,3 +19,4 @@ env/
 *.mp3
 test.py
 *.txt
+*.zip
