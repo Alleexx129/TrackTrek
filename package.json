@@ -31,6 +31,12 @@
     ],
     "directories": {
       "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "signtoolOptions": {
+        "certificateFile": "C:/Users/PC/Desktop/key2.pfx"
+      }
     }
   }
 }
