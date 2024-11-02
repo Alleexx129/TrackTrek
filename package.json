@@ -1,0 +1,36 @@
+{
+  "name": "tracktrek",
+  "productName": "TrackTrek",
+  "description": "My Electron application description",
+  "keywords": [],
+  "main": "./main.js",
+  "version": "1.0.0",
+  "author": "PC",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "dependencies": {
+    "tracktrek": "file:",
+    "TrackTrek": "file:"
+  },
+  "devDependencies": {
+    "electron": "31.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.alex.tracktrek",
+    "productName": "TrackTrek",
+    "files": [
+      "./main.js",
+      "./ui/**/*",
+      "./utils/**/*",
+      "./metadata/**/*",
+      "./download/**/*",
+      "*.py"
+    ],
+    "directories": {
+      "output": "dist"
+    }
+  }
+}
