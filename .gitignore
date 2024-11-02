@@ -2,6 +2,7 @@ node_modules
 out
 dist
 *.json
+package.json
 # Ignore Python bytecode files
 __pycache__/
 *.pyc
