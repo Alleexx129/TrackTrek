@@ -1,8 +1,14 @@
-node_modules
-out
-dist
+# Ignore Node modules
+node_modules/
+
+# Ignore output directories
+out/
+dist/
+
+# Ignore JSON files
 *.json
 package.json
+
 # Ignore Python bytecode files
 __pycache__/
 *.pyc
@@ -25,3 +31,6 @@ env/
 test.py
 *.txt
 *.zip
+
+# Ignore sensitive files
+*.pfx  # Ensure PFX files are not tracked
