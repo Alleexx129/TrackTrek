@@ -41,4 +41,4 @@ I will make this into a exe file soon with UI, but I will keep it open-source of
 
 # Other
 Use at your own risks as I said ;)
-I don't need credits if you enter this into public or make money out of this, feel free to modify or do whatevery you want, if you need specific changes let me know!
+I don't need credits if you enter this into public or make money out of this, feel free to modify or do whatevery you want, if you need specific changes or requests/suggestions, let me know!
