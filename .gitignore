@@ -24,7 +24,6 @@ env/
 
 # Ignore images
 *.jpg
-*.png
 
 # Ignore tests
 *.mp3
