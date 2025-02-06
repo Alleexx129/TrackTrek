@@ -32,4 +32,7 @@ test.py
 *.zip
 
 # Ignore sensitive files
-*.pfx  # Ensure PFX files are not tracked
+*.pfx
+
+# Remove build files since it takes way too much space
+buildre/
