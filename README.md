@@ -1,3 +1,5 @@
+# This version will be depreciated in the near future see [this](https://github.com/Alleexx129/TrackTrek-CS)
+
 ![Alt text](https://raw.githubusercontent.com/Alleexx129/Nyanko/refs/heads/main/logo.png "TrackTrek")
 
 # TrackTrek
